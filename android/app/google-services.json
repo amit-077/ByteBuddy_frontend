@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "857126373557",
+    "project_id": "bytebuddy-c3fd2",
+    "storage_bucket": "bytebuddy-c3fd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857126373557:android:86f09780b598535b9dd6fc",
+        "android_client_info": {
+          "package_name": "com.bytebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857126373557-lk78dkmksigbhg2gcbj84vdrvskdtj4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bytebuddy",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "857126373557-4i8ujv645krjtkevcahh4ihftu07g3bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvFO9e3K9z0OnLwrBpQ_4gnBv2pbOvvEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857126373557-4i8ujv645krjtkevcahh4ihftu07g3bk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
