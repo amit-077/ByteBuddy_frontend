@@ -5,6 +5,7 @@ import SignUp from '../SignUp';
 import Login from '../Login';
 import Settings from '../Settings';
 import Contribute from '../Contribute';
+import Sample from '../Sample';
 
 const Stack = createNativeStackNavigator();
 
@@ -108,6 +109,17 @@ export function AuthenticatedStack() {
       <Stack.Screen
         name="Contribute"
         component={Contribute}
+        options={{
+          animationTypeForReplace: 'pop',
+          animation: 'fade',
+          animationDuration: 1000,
+          headerShown: false,
+        }}
+      />
+
+<Stack.Screen
+        name="Sample"
+        component={Sample}
         options={{
           animationTypeForReplace: 'pop',
           animation: 'fade',

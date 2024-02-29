@@ -19,7 +19,6 @@ import {
 const News = ({navigation}) => {
   const windowHeight = Dimensions.get('window').height;
 
-
   const route = useRoute();
   const showSavedItems = route?.params?.showSavedItems;
 
@@ -142,6 +141,7 @@ const News = ({navigation}) => {
                   showSavedItems={showSavedItems}
                   isSaved={savedItems.savedItems.includes(item._id)}
                   windowHeight={windowHeight}
+                  navigation={navigation}
                 />
               );
             }}

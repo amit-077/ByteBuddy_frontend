@@ -1,3 +1,5 @@
-const url = 'https://byte-budyy-backend-2mn9.vercel.app';
+const url = 'http://192.168.0.104:5000';
+// https://byte-budyy-backend-2mn9.vercel.app
+// hosted on vercel
 
 module.exports = {url};

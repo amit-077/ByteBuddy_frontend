@@ -24,7 +24,14 @@ import {AppContext} from '../Context/ContextAPI';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {url} from '../utils/constant';
 
-const SingleItem = ({item, index, showSavedItems, isSaved, windowHeight}) => {
+const SingleItem = ({
+  item,
+  index,
+  showSavedItems,
+  isSaved,
+  windowHeight,
+  navigation,
+}) => {
   const [savedItem, setSavedItem] = useState(false);
 
   useEffect(() => {
@@ -207,12 +214,10 @@ const SingleItem = ({item, index, showSavedItems, isSaved, windowHeight}) => {
               colors={['#007dfe', '#0066cc']}
               style={{borderRadius: 10}}>
               <TouchableOpacity
-                activeOpacity={0.9}
+                activeOpacity={0.8}
                 onPress={async () => {
                   try {
-                    await Linking.openURL(
-                      item?.link || 'https://www.snapchat.com',
-                    );
+                    navigation.navigate('Sample', {link: item?.link});
                   } catch (e) {
                     console.log(e);
                   }

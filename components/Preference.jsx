@@ -26,7 +26,7 @@ const Preference = ({navigation}) => {
     'Blockchain',
     'Data Science',
     'Programming Languages',
-    'Web 3',
+    'Web3',
     'Cyber Security',
     'Javascript',
     'Web Development',
