@@ -10,6 +10,9 @@ import LottieView from 'lottie-react-native';
 import {useRoute} from '@react-navigation/native';
 import {url} from './utils/constant';
 import auth from '@react-native-firebase/auth';
+import messaging from '@react-native-firebase/messaging';
+import {PermissionsAndroid} from 'react-native';
+
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -18,6 +21,15 @@ import {
 
 const News = ({navigation}) => {
   const windowHeight = Dimensions.get('window').height;
+
+  // useEffect(() => {
+  //   const requestUserPermission = async () => {
+  //     PermissionsAndroid.request(
+  //       PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+  //     );
+  //   };
+  //   requestUserPermission();
+  // }, []);
 
   const route = useRoute();
   const showSavedItems = route?.params?.showSavedItems;
@@ -53,7 +65,6 @@ const News = ({navigation}) => {
         `${url}/getSavedItems?token=${user?.token}`,
       );
       setDataItems(data.savedItems);
-      console.log(data.savedItems);
     } catch (e) {
       console.log(e);
     }
