@@ -22,14 +22,35 @@ import {
 const News = ({navigation}) => {
   const windowHeight = Dimensions.get('window').height;
 
-  // useEffect(() => {
-  //   const requestUserPermission = async () => {
-  //     PermissionsAndroid.request(
-  //       PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
-  //     );
-  //   };
-  //   requestUserPermission();
-  // }, []);
+  useEffect(() => {
+    const requestUserPermission = async () => {
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
+    };
+    requestUserPermission();
+
+    // const getUserPermission = async () => {
+    //   await messaging().setBackgroundMessageHandler();
+    //   const authStatus = await messaging().requestPermission();
+    //   const enabled =
+    //     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    //     messaging.AuthorizationStatus.PROVISIONAL;
+
+    //   if (enabled) {
+    //     console.log('Auth status' + authStatus);
+    //   }
+    // };
+
+    // getUserPermission();
+
+    // const getToken = async () => {
+    //   let token = await messaging().getToken();
+    //   console.log(token);
+    // };
+
+    // getToken();
+  }, []);
 
   const route = useRoute();
   const showSavedItems = route?.params?.showSavedItems;
