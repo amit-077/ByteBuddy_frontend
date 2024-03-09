@@ -134,9 +134,9 @@ const Login = ({navigation}) => {
       await AsyncStorage.setItem('CodingBytes', JSON.stringify(data));
       navigateToNews();
     } catch (e) {
-      // if (e.response.status === 400) {
-      //   showToast('Please create an account first');
-      // }
+      if (e.response.status === 400) {
+        navigation.navigate('SignUp');
+      }
       console.log(e);
     } finally {
       setLoading(false);
