@@ -157,6 +157,9 @@ const News = ({navigation}) => {
       {!loading && connected && (
         <Box w={'100%'} mt={5}>
           <Carousel
+            lockScrollWhileSnapping={true} // Prevents accidental multiple snapping
+            // Above prop prevents bouncing back of card
+            activeSlideOffset={20}
             layout="stack"
             removeClippedSubviews={false}
             snapToStart={true}

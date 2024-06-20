@@ -44,8 +44,8 @@ export function AuthStack() {
         component={News}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
-          animationDuration: 2000,
+          animation: 'fade_from_bottom',
+          animationDuration: 1000,
           headerShown: false,
         }}
       />
@@ -54,7 +54,7 @@ export function AuthStack() {
         component={Settings}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
+          animation: 'fade_from_bottom',
           animationDuration: 1000,
           headerShown: false,
         }}
@@ -81,8 +81,8 @@ export function AuthenticatedStack() {
         component={Preference}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
-          animationDuration: 2000,
+          animation: 'fade_from_bottom',
+          animationDuration: 1000,
           headerShown: false,
         }}
       />
@@ -91,8 +91,8 @@ export function AuthenticatedStack() {
         component={News}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
-          animationDuration: 2000,
+          animation: 'fade_from_bottom',
+          animationDuration: 1000,
           headerShown: false,
         }}
       />
@@ -101,7 +101,7 @@ export function AuthenticatedStack() {
         component={Settings}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
+          animation: 'fade_from_bottom',
           animationDuration: 1000,
           headerShown: false,
         }}
@@ -111,18 +111,18 @@ export function AuthenticatedStack() {
         component={Contribute}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
+          animation: 'fade_from_bottom',
           animationDuration: 1000,
           headerShown: false,
         }}
       />
 
-<Stack.Screen
+      <Stack.Screen
         name="Sample"
         component={Sample}
         options={{
           animationTypeForReplace: 'pop',
-          animation: 'fade',
+          animation: 'fade_from_bottom',
           animationDuration: 1000,
           headerShown: false,
         }}

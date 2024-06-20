@@ -9,7 +9,7 @@ import {AppContext} from './Context/ContextAPI';
 import VersionInfo from 'react-native-version-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SettingFeed from './SettingFeed';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const Settings = ({navigation}) => {
   let {user, setUser, setRefreshFeed, refreshFeed, darkMode, setDarkMode} =
@@ -44,7 +44,7 @@ const Settings = ({navigation}) => {
     }
   };
 
-  const changePreferences = async () => {
+  const changePreferences = () => {
     try {
       navigation.navigate('Preference', {updateFeed: true});
     } catch (e) {
@@ -52,7 +52,7 @@ const Settings = ({navigation}) => {
     }
   };
 
-  const showSavedItems = async () => {
+  const showSavedItems = () => {
     try {
       navigation.navigate('News', {showSavedItems: true});
     } catch (e) {
@@ -60,7 +60,7 @@ const Settings = ({navigation}) => {
     }
   };
 
-  const contributeConcepts = async () => {
+  const contributeConcepts = () => {
     try {
       navigation.navigate('Contribute');
     } catch (e) {
@@ -149,9 +149,7 @@ const Settings = ({navigation}) => {
               onTrackColor={'#007DFE'}
               isChecked={darkMode}
               onToggle={() => {
-                setDarkMode(prevVal => {
-                  return !prevVal;
-                });
+                setDarkMode(!darkMode);
               }}
             />
           </Box>

@@ -11,6 +11,7 @@ import {AuthStack, AuthenticatedStack} from './components/navigation/stack';
 import LoadingScreen from './components/miscellaneous/LoadingScreen';
 import {AppRegistry} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
+import {StatusBar} from 'react-native';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -39,6 +40,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider>
+      <StatusBar backgroundColor={darkMode ? '#333' : '#eee'} animated={true}/>
       {isTryingLogin && <LoadingScreen />}
       {!isTryingLogin && (
         <AppContext.Provider

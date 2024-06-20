@@ -33,6 +33,9 @@ const SingleItem = ({
   navigation,
 }) => {
   const [savedItem, setSavedItem] = useState(false);
+  const [answered, setAnswered] = useState(false);
+  const [chosenOption, setChosenOption] = useState(0);
+  const [endChoose, setEndChoose] = useState(false);
 
   useEffect(() => {
     (showSavedItems || isSaved) && setSavedItem(true);
@@ -94,15 +97,17 @@ const SingleItem = ({
       )}
       {/* Card Image */}
       <Box w={'100%'} position={'relative'}>
-        {item.image && (
+        {(item?.image || item?.quizQuestion) && (
           <Image
             alt="Technology Image"
             // fallbackElement={<Skeleton width={'100%'} height={'100%'} />}
             source={{
-              uri: item?.image,
+              uri:
+                item?.image ||
+                'https://res.cloudinary.com/dh2wmc2jz/image/upload/v1714756885/quiz-time-concept_vxmmd4.jpg',
             }}
             w={'100%'}
-            h={200}
+            h={180}
             resizeMode="cover"
           />
         )}
@@ -118,14 +123,18 @@ const SingleItem = ({
             borderRadius={6}
             bgColor={'rgba(255,255,255,0.4)'}>
             <Text fontSize={windowHeight / 47} color={'#f5f5f5'}>
-              {item?.tag || 'Brainstorm'}
+              {item?.tag || (item?.quizQuestion ? 'Quiz Time' : 'Brainstorm')}
             </Text>
           </Box>
         </TouchableOpacity>
       </Box>
       {/* Card Title */}
       <Box h={'100%'} bgColor={darkMode ? '#222' : '#f5f5f5'} p={3}>
-        <Box display={'flex'} flexDir={'row'} gap={0} alignItems={'center'}>
+        <Box
+          display={item?.quizQuestion ? 'none' : 'block'}
+          flexDir={'row'}
+          gap={0}
+          alignItems={'center'}>
           <Box>
             <Text
               fontSize={windowHeight / 35}
@@ -142,8 +151,10 @@ const SingleItem = ({
           height={
             item?.title?.length > 30
               ? windowHeight / 2.8
-              : item.by
+              : item?.by
               ? windowHeight / 2.8
+              : item?.quizQuestion
+              ? 'auto'
               : windowHeight / 2.6
           }>
           <Text
@@ -152,10 +163,207 @@ const SingleItem = ({
             textAlign={'left'}
             color={darkMode ? '#f1f1f1' : '#555'}
             lineHeight={item?.question ? 28 : null}
-            fontWeight={'300'}>
-            {item?.description || item?.question}
+            fontWeight={item?.quizQuestion ? '500' : '300'}>
+            {item?.description || item?.question || item?.quizQuestion}
           </Text>
         </Box>
+        {/* Options */}
+        {item?.quizQuestion && (
+          <Box pt={7} display={'flex'} flexDir={'column'} gap={5}>
+            {/* option 1 */}
+            <Box>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                index={1}
+                onPress={() => {
+                  if (endChoose) {
+                    return;
+                  }
+                  setEndChoose(true);
+                  setAnswered(true);
+                  setChosenOption(1);
+                  if (item?.correctOption === 1) {
+                    console.log('Correct');
+                  }
+                }}>
+                <Box
+                  bgColor={
+                    !answered
+                      ? '#f3f3f3'
+                      : answered && item?.correctOption === 1
+                      ? '#65B741'
+                      : answered && chosenOption === 1
+                      ? '#fa5a5a'
+                      : null
+                  }
+                  paddingLeft={4}
+                  paddingRight={4}
+                  paddingTop={3}
+                  paddingBottom={3}
+                  borderWidth={0.8}
+                  borderColor={darkMode ? '#666' : '#d1d1d1'}
+                  borderRadius={20}>
+                  <Text
+                    fontSize={16}
+                    fontWeight={'500'}
+                    color={
+                      answered &&
+                      (chosenOption === 1 || item?.correctOption === 1)
+                        ? '#f5f5f5'
+                        : '#333'
+                    }>
+                    <Text fontWeight={'600'}>A.&nbsp;&nbsp;</Text>
+                    {item?.option1}
+                  </Text>
+                </Box>
+              </TouchableOpacity>
+            </Box>
+            {/* option 2 */}
+            <Box>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                index={2}
+                onPress={() => {
+                  if (endChoose) {
+                    return;
+                  }
+                  setEndChoose(true);
+                  setAnswered(true);
+                  setChosenOption(2);
+                  if (item?.correctOption === 2) {
+                    console.log('Correct');
+                  }
+                }}>
+                <Box
+                  bgColor={
+                    !answered
+                      ? '#f3f3f3'
+                      : answered && item?.correctOption === 2
+                      ? '#65B741'
+                      : answered && chosenOption === 2
+                      ? '#fa5a5a'
+                      : null
+                  }
+                  paddingLeft={4}
+                  paddingRight={4}
+                  paddingTop={3}
+                  paddingBottom={3}
+                  borderWidth={0.8}
+                  borderColor={darkMode ? '#666' : '#d1d1d1'}
+                  borderRadius={20}>
+                  <Text
+                    fontSize={16}
+                    fontWeight={'500'}
+                    color={
+                      answered &&
+                      (chosenOption === 2 || item?.correctOption === 2)
+                        ? '#f5f5f5'
+                        : '#333'
+                    }>
+                    <Text fontWeight={'600'}>B.&nbsp;&nbsp;</Text>
+                    {item?.option2}
+                  </Text>
+                </Box>
+              </TouchableOpacity>
+            </Box>
+            {/* option 3 */}
+            <Box>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                index={3}
+                onPress={() => {
+                  if (endChoose) {
+                    return;
+                  }
+                  setEndChoose(true);
+                  setAnswered(true);
+                  setChosenOption(3);
+                  if (item?.correctOption === 3) {
+                    console.log('Correct');
+                  }
+                }}>
+                <Box
+                  bgColor={
+                    !answered
+                      ? '#f3f3f3'
+                      : answered && item?.correctOption === 3
+                      ? '#65B741'
+                      : answered && chosenOption === 3
+                      ? '#fa5a5a'
+                      : null
+                  }
+                  paddingLeft={4}
+                  paddingRight={4}
+                  paddingTop={3}
+                  paddingBottom={3}
+                  borderWidth={0.8}
+                  borderColor={darkMode ? '#666' : '#d1d1d1'}
+                  borderRadius={20}>
+                  <Text
+                    fontSize={16}
+                    fontWeight={'500'}
+                    color={
+                      answered &&
+                      (chosenOption === 3 || item?.correctOption === 3)
+                        ? '#f5f5f5'
+                        : '#333'
+                    }>
+                    <Text fontWeight={'600'}>C.&nbsp;&nbsp;</Text>
+                    {item?.option3}
+                  </Text>
+                </Box>
+              </TouchableOpacity>
+            </Box>
+            {/* option 4 */}
+            <Box>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                index={4}
+                onPress={() => {
+                  if (endChoose) {
+                    return;
+                  }
+                  setEndChoose(true);
+                  setAnswered(true);
+                  setChosenOption(4);
+                  if (item?.correctOption === 4) {
+                    console.log('Correct');
+                  }
+                }}>
+                <Box
+                  bgColor={
+                    !answered
+                      ? '#f3f3f3'
+                      : answered && item?.correctOption === 4
+                      ? '#65B741'
+                      : answered && chosenOption === 4
+                      ? '#fa5a5a'
+                      : null
+                  }
+                  paddingLeft={4}
+                  paddingRight={4}
+                  paddingTop={3}
+                  paddingBottom={3}
+                  borderWidth={0.8}
+                  borderColor={darkMode ? '#666' : '#d1d1d1'}
+                  borderRadius={20}>
+                  <Text
+                    fontSize={16}
+                    fontWeight={'500'}
+                    color={
+                      answered &&
+                      (chosenOption === 4 || item?.correctOption === 4)
+                        ? '#f5f5f5'
+                        : '#333'
+                    }>
+                    <Text fontWeight={'600'}>D.&nbsp;&nbsp;</Text>
+                    {item?.option4}
+                  </Text>
+                </Box>
+              </TouchableOpacity>
+            </Box>
+          </Box>
+        )}
         {/* Asked by which company */}
         {item?.by && (
           <Box
@@ -168,9 +376,11 @@ const SingleItem = ({
           </Box>
         )}
         {/* Horizontal line */}
-        <Box w={'100%'} bgColor={darkMode ? '#666' : '#ddd'} h={'0.1%'}></Box>
+        {!item?.quizQuestion && (
+          <Box w={'100%'} bgColor={darkMode ? '#666' : '#ddd'} h={'0.1%'}></Box>
+        )}
         {/* Save button and Read more button*/}
-        {!item?.by && (
+        {!item?.by && !item?.quizQuestion && (
           <Box
             mt={5}
             display={'flex'}
