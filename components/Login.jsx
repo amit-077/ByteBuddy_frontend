@@ -37,7 +37,7 @@ const Login = ({navigation}) => {
     password: '',
   });
 
-  let {user, setUser} = useContext(AppContext);
+  let {user, setUser, darkMode, setDarkMode} = useContext(AppContext);
 
   // useEffect(() => {
   //   const navigateUser = () => {
@@ -91,7 +91,7 @@ const Login = ({navigation}) => {
       console.log(data);
       setUser(data);
       await AsyncStorage.setItem('CodingBytes', JSON.stringify(data));
-      navigateToHome();
+      navigateToHome();``
     } catch (e) {
       if (e.response.status === 400) {
         showToast('User exists, please login');
@@ -145,7 +145,7 @@ const Login = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <Box w={'100%'} h={'100%'} bgColor={'#fff'}>
+      <Box w={'100%'} h={'100%'} bgColor={darkMode ? '#333' : '#fff'}>
         <KeyboardAvoidingView
           behavior="padding"
           keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
@@ -164,7 +164,11 @@ const Login = ({navigation}) => {
           </Box>
           <Box paddingLeft={5} paddingRight={5}>
             <Box>
-              <Text fontSize={30} fontWeight={'500'}>
+              <Text
+                fontSize={30}
+                fontWeight={'500'}
+                fontFamily={'Nunito'}
+                color={darkMode ? '#f5f5f5' : '#333'}>
                 Login
               </Text>
             </Box>
@@ -173,7 +177,9 @@ const Login = ({navigation}) => {
               <Box mt={5} display={'flex'} flexDir={'column'} gap={3}>
                 <Input
                   variant="underlined"
+                  color={darkMode ? '#f5f5f5' : '#333'}
                   placeholder="Email ID"
+                  fontFamily={'Nunito'}
                   name="email"
                   value={userData.email}
                   fontSize={15}
@@ -191,13 +197,14 @@ const Login = ({navigation}) => {
                 <Input
                   variant="underlined"
                   placeholder="Password"
+                  fontFamily={'Nunito'}
                   name="password"
                   value={userData.password}
                   type={show ? 'text' : 'password'}
                   fontSize={15}
                   borderColor={'#e1e1e1'}
                   pl={2}
-                  color={'#333'}
+                  color={darkMode ? '#f5f5f5' : '#333'}
                   onChangeText={e => {
                     setUserData(prevVal => {
                       return {...prevVal, password: e};
@@ -237,7 +244,7 @@ const Login = ({navigation}) => {
                   onPress={() => {
                     loginUser();
                   }}>
-                  <Text color={'#f5f5f5'} fontSize={18}>
+                  <Text color={'#f5f5f5'} fontSize={18} fontFamily={'Nunito'}>
                     Login
                   </Text>
                 </Button>
@@ -285,7 +292,9 @@ const Login = ({navigation}) => {
                 justifyContent={'center'}
                 alignItems={'center'}
                 pt={3}>
-                <Text>
+                <Text
+                  fontFamily={'Nunito'}
+                  color={darkMode ? '#f5f5f5' : '222'}>
                   Don't have an account ?{' '}
                   <Text
                     fontWeight={'500'}

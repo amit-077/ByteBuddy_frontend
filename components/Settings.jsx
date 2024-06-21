@@ -68,6 +68,22 @@ const Settings = ({navigation}) => {
     }
   };
 
+  const changeDarkMode = async () => {
+    try {
+      // await AsyncStorage.setItem('DARKMODE', JSON.stringify(data));
+      let DARKMODE = await AsyncStorage.getItem('DARKMODE') || null;
+      if (DARKMODE === null) {
+        await AsyncStorage.setItem('DARKMODE', 'TRUE');
+      } else if (DARKMODE === 'TRUE') {
+        await AsyncStorage.setItem('DARKMODE', 'FALSE');
+      } else if (DARKMODE === 'FALSE') {
+        await AsyncStorage.setItem('DARKMODE', 'TRUE');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <Box
       w={'100%'}
@@ -75,7 +91,7 @@ const Settings = ({navigation}) => {
       bgColor={darkMode ? '#222' : '#f5f5f5'}
       pl={5}
       pr={5}
-      pt={4}>
+      pt={12}>
       <Box
         display={'flex'}
         w={'100%'}
@@ -84,7 +100,11 @@ const Settings = ({navigation}) => {
         alignItems={'center'}>
         <Box>
           <Box></Box>
-          <Text fontSize={20} fontWeight={500} color={'#007dfe'}>
+          <Text
+            fontSize={20}
+            fontWeight={500}
+            color={'#007dfe'}
+            fontFamily={'Nunito'}>
             ByteBuddy
           </Text>
         </Box>
@@ -139,7 +159,10 @@ const Settings = ({navigation}) => {
               color={darkMode ? '#f1f1f1' : '#777'}
               size={25}
             />
-            <Text fontSize={18} color={darkMode ? '#f1f1f1' : '#222'}>
+            <Text
+              fontSize={18}
+              color={darkMode ? '#f1f1f1' : '#222'}
+              fontFamily={'Nunito'}>
               Dark mode
             </Text>
           </Box>
@@ -149,6 +172,7 @@ const Settings = ({navigation}) => {
               onTrackColor={'#007DFE'}
               isChecked={darkMode}
               onToggle={() => {
+                changeDarkMode();
                 setDarkMode(!darkMode);
               }}
             />
@@ -178,7 +202,10 @@ const Settings = ({navigation}) => {
       </Box>
       {/* App version */}
       <Box w={'100%'} display={'flex'} alignItems={'center'} mt={5}>
-        <Text color={darkMode ? '#f1f1f1' : '#999'} fontWeight={300}>
+        <Text
+          color={darkMode ? '#f1f1f1' : '#999'}
+          fontWeight={300}
+          fontFamily={'Nunito'}>
           App version : 1.0.4
         </Text>
       </Box>

@@ -60,10 +60,11 @@ const NewsHeader = ({navigationNews, showSavedItems}) => {
             <Text
               fontSize={16}
               fontWeight={600}
+              fontFamily={'Nunito'}
               color={darkMode ? '#f1f1f1' : '#333'}
               pl={2}
               pr={2}
-              borderBottomWidth={4}
+              borderBottomWidth={2.5}
               borderColor={'#007DFE'}
               paddingBottom={0.6}
               borderRadius={3}>

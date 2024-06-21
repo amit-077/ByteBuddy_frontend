@@ -6,6 +6,9 @@ import Login from '../Login';
 import Settings from '../Settings';
 import Contribute from '../Contribute';
 import Sample from '../Sample';
+import {Appearance, useColorScheme} from 'react-native';
+import {useContext} from 'react';
+import {AppContext} from '../Context/ContextAPI';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,8 +67,14 @@ export function AuthStack() {
 }
 
 export function AuthenticatedStack() {
+  let {darkMode, setDarkMode} = useContext(AppContext);
+
   return (
-    <Stack.Navigator initialRouteName="News">
+    <Stack.Navigator
+      initialRouteName="News"
+      screenOptions={{
+        navigationBarColor: darkMode ? '#333' : '#fff',
+      }}>
       <Stack.Screen
         name="SignUp"
         component={SignUp}

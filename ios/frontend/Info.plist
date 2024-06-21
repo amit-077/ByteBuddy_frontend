@@ -49,9 +49,26 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Montserrat-VariableFont_wght.ttf</string>
-		<string>Roboto-Regular.ttf</string>
-		<string>Rubik-VariableFont_wght.ttf</string>
+		<string>Montserrat.ttf</string>
+		<string>Roboto.ttf</string>
+		<string>Rubik.ttf</string>
+		<string>Poppins.ttf</string>
+		<string>Nunito-BlackItalic.ttf</string>
+		<string>Nunito-Bold.ttf</string>
+		<string>Nunito-BoldItalic.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
+		<string>Nunito-ExtraBoldItalic.ttf</string>
+		<string>Nunito-ExtraLight.ttf</string>
+		<string>Nunito-ExtraLightItalic.ttf</string>
+		<string>Nunito-Italic.ttf</string>
+		<string>Nunito-LightItalic.ttf</string>
+		<string>Nunito-MediumItalic.ttf</string>
+		<string>Nunito-SemiBold.ttf</string>
+		<string>Nunito-SemiBoldItalic.ttf</string>
+		<string>Nunito.ttf</string>
+		<string>Nunito1.ttf</string>
+		<string>NunitoBlack.ttf</string>
+		<string>NunitoLight.ttf</string>
 	</array>
 </dict>
 </plist>

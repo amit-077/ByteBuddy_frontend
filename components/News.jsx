@@ -18,6 +18,7 @@ import {
   GoogleSigninButton,
   GoogleAuthProvider,
 } from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const News = ({navigation}) => {
   const windowHeight = Dimensions.get('window').height;
@@ -117,6 +118,25 @@ const News = ({navigation}) => {
     return auth().signInWithCredential(googleCredential);
   }
 
+  const checkDarkMode = async () => {
+    try {
+      let mode = await AsyncStorage.getItem('DARKMODE');
+      if (mode === null || !mode) {
+        return;
+      } else if (mode === 'TRUE') {
+        setDarkMode(true);
+      } else if (mode === 'FALSE') {
+        setDarkMode(false);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    checkDarkMode();
+  }, []);
+
   return (
     <Box w={'100%'} h={'100%'} bgColor={darkMode ? '#222' : '#f5f5f5'}>
       {/*  */}
@@ -143,19 +163,20 @@ const News = ({navigation}) => {
         <Box
           w={'100%'}
           h={'100%'}
+          mt={-20}
           justifyContent={'center'}
           pb={20}
           alignItems={'center'}>
-          <Text fontSize={16} color={'#888'}>
+          <Text fontSize={16} color={'#888'} fontFamily={'Nunito'}>
             You haven't begun saving anything.
           </Text>
-          <Text fontSize={16} color={'#888'}>
+          <Text fontSize={16} color={'#888'} fontFamily={'Nunito'}>
             Begin right away!
           </Text>
         </Box>
       )}
       {!loading && connected && (
-        <Box w={'100%'} mt={5}>
+        <Box w={'100%'} mt={-5}>
           <Carousel
             lockScrollWhileSnapping={true} // Prevents accidental multiple snapping
             // Above prop prevents bouncing back of card
@@ -193,6 +214,7 @@ const News = ({navigation}) => {
           w={'100%'}
           h={'100%'}
           display={'flex'}
+          mt={-20}
           justifyContent={'center'}
           alignItems={'center'}
           pb={20}>
@@ -205,6 +227,7 @@ const News = ({navigation}) => {
             />
             <Text
               position={'absolute'}
+              fontFamily={'Nunito'}
               bottom={2}
               fontWeight={400}
               color={'#444'}>

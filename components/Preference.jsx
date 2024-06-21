@@ -176,7 +176,7 @@ const Preference = ({navigation}) => {
             bgColor={darkMode ? '#222' : '#f5f5f5'}>
             {
               <Box
-                mt={2}
+                mt={12}
                 display={'flex'}
                 flexDir={'row'}
                 justifyContent={'space-between'}
@@ -358,10 +358,10 @@ const Preference = ({navigation}) => {
                   );
                 })}
               </Box>
-              <Box w={'100%'} h={20}></Box>
+              <Box w={'100%'} h={25}></Box>
             </Box>
             {/* Next Button */}
-            <Box position={'absolute'} bottom={0} w={'100%'}>
+            <Box position={'relative'} mb={12} w={'100%'}>
               <TouchableOpacity activeOpacity={0.9}>
                 {/* <Box
                 bgColor={'#007DFE'}

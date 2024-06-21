@@ -40,7 +40,11 @@ const App = () => {
 
   return (
     <NativeBaseProvider>
-      <StatusBar backgroundColor={darkMode ? '#333' : '#eee'} animated={true}/>
+      <StatusBar
+        backgroundColor={darkMode ? '#333' : '#eee'}
+        animated={true}
+        barStyle={darkMode ? 'default' : 'dark-content'}
+      />
       {isTryingLogin && <LoadingScreen />}
       {!isTryingLogin && (
         <AppContext.Provider

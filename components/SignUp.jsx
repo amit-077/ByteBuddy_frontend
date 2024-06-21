@@ -38,7 +38,7 @@ const SignUp = ({navigation}) => {
     password: '',
   });
 
-  let {user, setUser} = useContext(AppContext);
+  let {user, setUser, darkMode, setDarkMode} = useContext(AppContext);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -127,7 +127,7 @@ const SignUp = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Box w={'100%'} h={'100%'} bgColor={'#fff'}>
+        <Box w={'100%'} h={'100%'} bgColor={darkMode ? '#333' : '#fff'}>
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
@@ -136,7 +136,7 @@ const SignUp = ({navigation}) => {
               justifyContent: 'center',
               flex: 1,
             }}>
-            <Box mt={5}>
+            <Box mt={3}>
               <Image
                 alt="SignUp Image"
                 source={require('../assets/signup.jpg')}
@@ -146,7 +146,11 @@ const SignUp = ({navigation}) => {
             </Box>
             <Box paddingLeft={5} paddingRight={5}>
               <Box>
-                <Text fontSize={30} fontWeight={'500'}>
+                <Text
+                  fontSize={30}
+                  fontWeight={'500'}
+                  fontFamily={'Nunito'}
+                  color={darkMode ? '#f5f5f5' : '#333'}>
                   Register
                 </Text>
               </Box>
@@ -155,6 +159,8 @@ const SignUp = ({navigation}) => {
                 <Box mt={5} display={'flex'} flexDir={'column'} gap={3}>
                   <Input
                     variant="underlined"
+                    color={darkMode ? '#f5f5f5' : '#333'}
+                    fontFamily={'Nunito'}
                     placeholder="Name"
                     name="name"
                     value={userData.name}
@@ -173,6 +179,8 @@ const SignUp = ({navigation}) => {
                   <Input
                     variant="underlined"
                     placeholder="Email ID"
+                    fontFamily={'Nunito'}
+                    color={darkMode ? '#f5f5f5' : '#333'}
                     name="email"
                     value={userData.email}
                     fontSize={15}
@@ -190,13 +198,14 @@ const SignUp = ({navigation}) => {
                   <Input
                     variant="underlined"
                     placeholder="Password"
+                    fontFamily={'Nunito'}
                     name="password"
                     value={userData.password}
                     type={show ? 'text' : 'password'}
                     fontSize={15}
                     borderColor={'#e1e1e1'}
                     pl={2}
-                    color={'#333'}
+                    color={darkMode ? '#f5f5f5' : '#333'}
                     onChangeText={e => {
                       setUserData(prevVal => {
                         return {...prevVal, password: e};
@@ -237,7 +246,7 @@ const SignUp = ({navigation}) => {
                     onPress={() => {
                       registerUser();
                     }}>
-                    <Text color={'#f5f5f5'} fontSize={18}>
+                    <Text color={'#f5f5f5'} fontSize={18} fontFamily={'Nunito'}>
                       Register
                     </Text>
                   </Button>
@@ -263,7 +272,9 @@ const SignUp = ({navigation}) => {
                   alignItems={'center'}
                   pb={10}
                   pt={5}>
-                  <Text>
+                  <Text
+                    fontFamily={'Nunito'}
+                    color={darkMode ? '#f5f5f5' : '222'}>
                     Already have an account ?{' '}
                     <Text
                       fontWeight={'500'}

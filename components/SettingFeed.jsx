@@ -38,7 +38,7 @@ const SettingFeed = ({leftIcon, rightIcon, title, func}) => {
               size={23}
             />
           )}
-          <Text fontSize={18} color={darkMode ? '#f1f1f1' : '#222'}>
+          <Text fontSize={18} color={darkMode ? '#f1f1f1' : '#222'} fontFamily={'Nunito'}>
             {title}
           </Text>
         </Box>

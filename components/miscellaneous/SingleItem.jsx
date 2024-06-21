@@ -58,6 +58,8 @@ const SingleItem = ({
   return (
     <Box
       w={'100%'}
+      borderWidth={'0.5'}
+      borderColor={darkMode ? '#333' : '#ccc'}
       h={'100%'}
       bgColor={'#efefef'}
       marginTop={5}
@@ -73,7 +75,7 @@ const SingleItem = ({
             container: {
               borderTopLeftRadius: 25,
               borderTopRightRadius: 25,
-              backgroundColor: '#eee',
+              backgroundColor: darkMode ? '#222' : '#eee',
               alignItems: 'center',
               padding: 30,
               paddingTop: 0,
@@ -84,12 +86,27 @@ const SingleItem = ({
               <Box>
                 {/* Top dash line */}
                 <Box w={'100%'} alignItems={'center'} mt={3}>
-                  <Box w={12} h={1} bgColor={'#999'} borderRadius={100}></Box>
+                  <Box
+                    w={12}
+                    h={1}
+                    bgColor={darkMode ? '#ddd' : '#999'}
+                    borderRadius={100}></Box>
                 </Box>
-                <Text fontSize={16} marginBottom={3} fontWeight={'600'} mt={7}>
+                <Text
+                  fontSize={16}
+                  marginBottom={1}
+                  fontWeight={'600'}
+                  color={darkMode ? '#eee' : '#111'}
+                  mt={7}
+                  fontFamily={'Nunito'}>
                   ANSWER :{' '}
                 </Text>
-                <Text fontSize={16}>{item?.answer}</Text>
+                <Text
+                  fontSize={17}
+                  fontFamily={'Nunito'}
+                  color={darkMode ? '#bbb' : '#777'}>
+                  {item?.answer}
+                </Text>
               </Box>
             </ScrollView>
           </Box>
@@ -122,7 +139,10 @@ const SingleItem = ({
             pb={0.5}
             borderRadius={6}
             bgColor={'rgba(255,255,255,0.4)'}>
-            <Text fontSize={windowHeight / 47} color={'#f5f5f5'}>
+            <Text
+              fontSize={windowHeight / 47}
+              color={'#f5f5f5'}
+              fontFamily={'Nunito'}>
               {item?.tag || (item?.quizQuestion ? 'Quiz Time' : 'Brainstorm')}
             </Text>
           </Box>
@@ -137,10 +157,11 @@ const SingleItem = ({
           alignItems={'center'}>
           <Box>
             <Text
-              fontSize={windowHeight / 35}
+              fontSize={windowHeight / 37}
+              fontFamily={'Nunito'}
               fontWeight={'600'}
               display={item.by ? 'none' : 'flex'}
-              color={darkMode ? '#f1f1f1' : '#222'}>
+              color={darkMode ? '#f1f1f1' : '#000'}>
               {item?.title}
             </Text>
           </Box>
@@ -158,10 +179,11 @@ const SingleItem = ({
               : windowHeight / 2.6
           }>
           <Text
-            mt={3}
+            mt={1}
             fontSize={windowHeight / 42}
+            fontFamily={'Nunito'}
             textAlign={'left'}
-            color={darkMode ? '#f1f1f1' : '#555'}
+            color={darkMode ? '#f1f1f1' : item?.quizQuestion ? '#111' : '#888'}
             lineHeight={item?.question ? 28 : null}
             fontWeight={item?.quizQuestion ? '500' : '300'}>
             {item?.description || item?.question || item?.quizQuestion}
@@ -189,7 +211,9 @@ const SingleItem = ({
                 <Box
                   bgColor={
                     !answered
-                      ? '#f3f3f3'
+                      ? darkMode
+                        ? '#333'
+                        : '#f3f3f3'
                       : answered && item?.correctOption === 1
                       ? '#65B741'
                       : answered && chosenOption === 1
@@ -205,10 +229,13 @@ const SingleItem = ({
                   borderRadius={20}>
                   <Text
                     fontSize={16}
+                    fontFamily={'Nunito'}
                     fontWeight={'500'}
                     color={
                       answered &&
                       (chosenOption === 1 || item?.correctOption === 1)
+                        ? '#f5f5f5'
+                        : darkMode
                         ? '#f5f5f5'
                         : '#333'
                     }>
@@ -237,7 +264,9 @@ const SingleItem = ({
                 <Box
                   bgColor={
                     !answered
-                      ? '#f3f3f3'
+                      ? darkMode
+                        ? '#333'
+                        : '#f3f3f3'
                       : answered && item?.correctOption === 2
                       ? '#65B741'
                       : answered && chosenOption === 2
@@ -253,10 +282,13 @@ const SingleItem = ({
                   borderRadius={20}>
                   <Text
                     fontSize={16}
+                    fontFamily={'Nunito'}
                     fontWeight={'500'}
                     color={
                       answered &&
                       (chosenOption === 2 || item?.correctOption === 2)
+                        ? '#f5f5f5'
+                        : darkMode
                         ? '#f5f5f5'
                         : '#333'
                     }>
@@ -285,7 +317,9 @@ const SingleItem = ({
                 <Box
                   bgColor={
                     !answered
-                      ? '#f3f3f3'
+                      ? darkMode
+                        ? '#333'
+                        : '#f3f3f3'
                       : answered && item?.correctOption === 3
                       ? '#65B741'
                       : answered && chosenOption === 3
@@ -301,10 +335,13 @@ const SingleItem = ({
                   borderRadius={20}>
                   <Text
                     fontSize={16}
+                    fontFamily={'Nunito'}
                     fontWeight={'500'}
                     color={
                       answered &&
                       (chosenOption === 3 || item?.correctOption === 3)
+                        ? '#f5f5f5'
+                        : darkMode
                         ? '#f5f5f5'
                         : '#333'
                     }>
@@ -333,7 +370,9 @@ const SingleItem = ({
                 <Box
                   bgColor={
                     !answered
-                      ? '#f3f3f3'
+                      ? darkMode
+                        ? '#333'
+                        : '#f3f3f3'
                       : answered && item?.correctOption === 4
                       ? '#65B741'
                       : answered && chosenOption === 4
@@ -349,10 +388,13 @@ const SingleItem = ({
                   borderRadius={20}>
                   <Text
                     fontSize={16}
+                    fontFamily={'Nunito'}
                     fontWeight={'500'}
                     color={
                       answered &&
                       (chosenOption === 4 || item?.correctOption === 4)
+                        ? '#f5f5f5'
+                        : darkMode
                         ? '#f5f5f5'
                         : '#333'
                     }>
@@ -372,7 +414,9 @@ const SingleItem = ({
             alignItems={'flex-end'}
             mt={3}
             mb={3}>
-            <Text fontSize={windowHeight / 44}>- {item?.by}</Text>
+            <Text fontSize={windowHeight / 44} fontFamily={'Nunito'}>
+              - {item?.by}
+            </Text>
           </Box>
         )}
         {/* Horizontal line */}
@@ -394,7 +438,7 @@ const SingleItem = ({
                 saveItem();
               }}>
               <Box
-                borderWidth={1.5}
+                borderWidth={1}
                 borderRadius={10}
                 p={2}
                 pl={4}
@@ -408,13 +452,14 @@ const SingleItem = ({
                   alignItems={'center'}>
                   <Text
                     fontSize={windowHeight / 42}
-                    color={savedItem ? '#f5f5f5' : darkMode ? '#fff' : '#222'}>
+                    fontFamily={'Nunito'}
+                    color={savedItem ? '#f5f5f5' : darkMode ? '#fff' : '#555'}>
                     {savedItem ? 'Saved' : 'Save'}
                   </Text>
                   <Ionicons
                     name={savedItem ? 'bookmark' : 'bookmark-outline'}
                     size={windowHeight / 37}
-                    color={savedItem ? '#f5f5f5' : darkMode ? '#fff' : '#222'}
+                    color={savedItem ? '#f5f5f5' : darkMode ? '#fff' : '#555'}
                   />
                 </Box>
               </Box>
@@ -447,7 +492,10 @@ const SingleItem = ({
                     flexDir={'row'}
                     gap={2}
                     alignItems={'center'}>
-                    <Text fontSize={windowHeight / 42} color={'#f5f5f5'}>
+                    <Text
+                      fontSize={windowHeight / 42}
+                      color={'#f5f5f5'}
+                      fontFamily={'Nunito'}>
                       Read more
                     </Text>
                     <Ionicons
@@ -471,7 +519,7 @@ const SingleItem = ({
               onPress={() => {
                 rbSheet.current.open();
               }}>
-              <Text fontSize={17} color={'#f5f5f5'}>
+              <Text fontSize={17} color={'#f5f5f5'} fontFamily={'Nunito'}>
                 Reveal Answer
               </Text>
             </Button>
