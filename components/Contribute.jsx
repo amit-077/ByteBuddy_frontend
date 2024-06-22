@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Input,
+  Modal,
   ScrollView,
   Select,
   Text,
@@ -16,10 +17,11 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import { url } from './utils/constant';
+import {url} from './utils/constant';
 
 const Contribute = ({navigation}) => {
   let {user, setUser, darkMode, setDarkMode} = useContext(AppContext);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const topics = [
     'AI',
@@ -99,8 +101,48 @@ const Contribute = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Box w={'100%'} h={'100%'} bgColor={darkMode ? '#222' : '#f5f5f5'}>
+          <Modal
+            isOpen={modalVisible}
+            size={'xl'}
+            onClose={() => {
+              setModalVisible(false);
+            }}>
+            <Modal.Content bgColor={darkMode ? '#333' : '#f5f5f5'}>
+              <Modal.Body>
+                <Box>
+                  <Box>
+                    <Text
+                      color={darkMode ? '#f5f5f5' : '#222'}
+                      fontSize={16}
+                      textAlign={'justify'}
+                      fontFamily={'Nunito'}>
+                      Your contribution will be reviewed by our team and, upon
+                      approval, will be added to the app within 24 hours. You
+                      will be notified via email once the process is complete.
+                      Thank you for contributing to our app.
+                    </Text>
+                  </Box>
+                  <Box mt={'5'} display={'flex'} alignItems={'flex-end'}>
+                    <TouchableOpacity
+                      activeOpacity={0.9}
+                      onPress={() => {
+                        setModalVisible(false);
+                      }}>
+                      <Box
+                        bgColor={'#007DFE'}
+                        px={'6'}
+                        py={'2'}
+                        borderRadius={'4'}>
+                        <Text color={darkMode ? '#f5f5f5' : '#222'}>OK</Text>
+                      </Box>
+                    </TouchableOpacity>
+                  </Box>
+                </Box>
+              </Modal.Body>
+            </Modal.Content>
+          </Modal>
           <Box
             w={'100%'}
             bgColor={darkMode ? '#333' : '#eee'}
@@ -133,16 +175,24 @@ const Contribute = ({navigation}) => {
                 color={darkMode ? '#f1f1f1' : '#333'}
                 pl={2}
                 pr={2}
-                borderBottomWidth={4}
+                borderBottomWidth={2.5}
                 borderColor={'#007DFE'}
                 paddingBottom={0.6}
+                fontFamily={'Nunito'}
                 borderRadius={3}>
                 Contribute
               </Text>
             </Box>
             <Box>
               <TouchableOpacity activeOpacity={0.6}>
-                <AntDesign name="infocirlceo" size={18} color={'#007dfe'} />
+                <AntDesign
+                  name="infocirlceo"
+                  size={18}
+                  color={'#007dfe'}
+                  onPress={() => {
+                    setModalVisible(true);
+                  }}
+                />
               </TouchableOpacity>
             </Box>
           </Box>
@@ -158,6 +208,7 @@ const Contribute = ({navigation}) => {
               <Box>
                 <Input
                   placeholder="Enter contributor's name"
+                  fontFamily={'Nunito'}
                   fontSize={16}
                   color={darkMode ? '#f1f1f1' : '#555'}
                   value={contributor.name}
@@ -175,6 +226,7 @@ const Contribute = ({navigation}) => {
               <Box>
                 <Input
                   placeholder="Enter title"
+                  fontFamily={'Nunito'}
                   color={darkMode ? '#f1f1f1' : '#555'}
                   _focus={{bgColor: darkMode ? '#2a2a2a' : '#f0f3f7'}}
                   fontSize={16}
@@ -192,6 +244,7 @@ const Contribute = ({navigation}) => {
               <Box>
                 <TextArea
                   placeholder="Enter description"
+                  fontFamily={'Nunito'}
                   fontSize={16}
                   multiline={true}
                   value={contributor.description}
@@ -211,6 +264,7 @@ const Contribute = ({navigation}) => {
               <Box>
                 <Select
                   placeholder="Choose topic tag"
+                  fontFamily={'Nunito'}
                   color={darkMode ? '#f1f1f1' : '#555'}
                   fontSize={16}
                   onValueChange={e => {
@@ -233,7 +287,7 @@ const Contribute = ({navigation}) => {
                 _pressed={{bg: '#268ffc'}}
                 mt={3}
                 onPress={addContribution}>
-                <Text color={'#f5f5f5'} fontSize={18}>
+                <Text color={'#f5f5f5'} fontSize={18} fontFamily={'Nunito'}>
                   Contribute
                 </Text>
               </Button>

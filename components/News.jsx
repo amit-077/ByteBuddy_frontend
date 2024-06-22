@@ -230,7 +230,7 @@ const News = ({navigation}) => {
               fontFamily={'Nunito'}
               bottom={2}
               fontWeight={400}
-              color={'#444'}>
+              color={darkMode ? '#f5f5f5':'#444'}>
               {showSavedItems
                 ? 'Fetching saved items...'
                 : 'Loading your feed...'}

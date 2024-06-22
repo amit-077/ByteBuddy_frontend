@@ -168,7 +168,7 @@ const Preference = ({navigation}) => {
         </Box>
       )}
       {!feedLoading && (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Box
             w={'100%'}
             h={'100%'}
@@ -198,7 +198,11 @@ const Preference = ({navigation}) => {
                       // navigation.navigate('News');
                       setUserTopics(true);
                     }}>
-                    <Text fontWeight={600} color={'#007DFE'} fontSize={15}>
+                    <Text
+                      fontWeight={600}
+                      color={'#007DFE'}
+                      fontSize={15}
+                      fontFamily={'Nunito'}>
                       Skip
                     </Text>
                   </TouchableOpacity>
@@ -208,12 +212,18 @@ const Preference = ({navigation}) => {
             {/* Heading */}
             <Box paddingLeft={5} paddingRight={5} marginTop={7}>
               <Box>
-                <Text fontSize={18} color={darkMode ? '#f1f1f1' : '#222'}>
+                <Text
+                  fontSize={18}
+                  color={darkMode ? '#f1f1f1' : '#222'}
+                  fontFamily={'Nunito'}>
                   What topics capture your interest ?
                 </Text>
               </Box>
               <Box mt={1}>
-                <Text fontSize={15} color={darkMode ? '#bbb' : '#222'}>
+                <Text
+                  fontSize={15}
+                  color={darkMode ? '#bbb' : '#222'}
+                  fontFamily={'Nunito'}>
                   Select at least 5 topics interest you the most.
                 </Text>
               </Box>
@@ -222,7 +232,8 @@ const Preference = ({navigation}) => {
                 <Text
                   fontSize={17}
                   fontWeight={500}
-                  color={darkMode ? '#f1f1f1' : '#222'}>
+                  fontFamily={'Nunito'}
+                  color={darkMode ? '#f1f1f1' : '#111'}>
                   Suggested topics for you.
                 </Text>
               </Box>
@@ -274,6 +285,7 @@ const Preference = ({navigation}) => {
                         borderRadius={5}>
                         <Text
                           fontWeight={500}
+                          fontFamily={'Nunito'}
                           color={
                             selectedTopics.includes(e)
                               ? '#f5f5f5'
@@ -291,7 +303,11 @@ const Preference = ({navigation}) => {
               {/* More topics */}
               {/* Suggested Topics */}
               <Box marginTop={8}>
-                <Text fontSize={17} fontWeight={500}>
+                <Text
+                  fontSize={17}
+                  fontWeight={500}
+                  fontFamily={'Nunito'}
+                  color={darkMode ? '#f1f1f1' : '#111'}>
                   More topics for you.
                 </Text>
               </Box>
@@ -344,6 +360,7 @@ const Preference = ({navigation}) => {
                         borderRadius={5}>
                         <Text
                           fontWeight={500}
+                          fontFamily={'Nunito'}
                           color={
                             selectedTopics.includes(e)
                               ? '#f5f5f5'
@@ -389,7 +406,7 @@ const Preference = ({navigation}) => {
                     }
                     setUserTopics(false);
                   }}>
-                  <Text color={'#f5f5f5'} fontSize={18}>
+                  <Text color={'#f5f5f5'} fontSize={18} fontFamily={'Nunito'}>
                     {updateFeed ? 'Update Topics' : 'Select topics'}
                   </Text>
                 </Button>

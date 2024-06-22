@@ -414,7 +414,10 @@ const SingleItem = ({
             alignItems={'flex-end'}
             mt={3}
             mb={3}>
-            <Text fontSize={windowHeight / 44} fontFamily={'Nunito'}>
+            <Text
+              fontSize={windowHeight / 44}
+              fontFamily={'Nunito'}
+              color={darkMode ? '#f5f5f5' : '#333'}>
               - {item?.by}
             </Text>
           </Box>
